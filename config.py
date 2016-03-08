@@ -12,7 +12,7 @@
 import os, stat
 
 print '..start '
-HOME_DIR='/home/huyheo/work/SUHD1_CLEAN_CO'
+HOME_DIR='/home/huyheo/work/Project/SUHD1_LHCR/'
 INITRAM_DIR ='platform/initram_rootfs/'
 BUSY_BOX_DIR="product_config/platform/oe_rootfs_source/suhd1/debug/meta-stm/meta-stm-bsp/recipes-humax/busybox/busybox/busybox.cfg"
 
