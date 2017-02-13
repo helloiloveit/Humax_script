@@ -17,8 +17,10 @@ os.chdir(home_url)
 print "### cd "+ home_url
 
 if (os.path.isdir("release_buildtree")):
-    print "Extracted build tree is existed"
+    print "Extracted build tree is existed. Delete it..."
     os.system("rm -fr " + "release_buildtree")
+else:
+    print "No dir is existed.Go .."
 
 print "tar -xjvf " + target_file
 os.system("tar -xjvf " + target_file)

@@ -10,4 +10,4 @@ except:
 	print 'wrong input, pls try again'
 	exit()
 print 'grep -R --exclude-dir={.svn,.tags} ' + target_file
-os.system(" grep -R --exclude-dir={.svn,.tags}  "+ target_file )
+os.system(" grep -R --exclude-dir={.svn,.tags}  "+ target_file + " ." )
