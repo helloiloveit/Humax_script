@@ -6,35 +6,59 @@ import sys
 home_url = "/home/huyheo/work/Project/Test_New_Co"
 
 try:
-	target_file = sys.argv[1]
+	target1 = sys.argv[1]
 except:
 	print 'wrong input, pls try again'
 	exit()
-print "### cd "+ home_url  
-os.system("rm -fr " + home_url)
-os.system("mkdir " + home_url)
-os.chdir(home_url)
-print "svn co http://svn.humaxdigital.com/drr_cdi/trunk/models/t51/ ./"
-os.system("svn co http://svn.humaxdigital.com/drr_cdi/trunk/models/t51/ ./")
 
-print "### cd model/down"
-os.chdir(home_url + "/model/down")
-os.chdir("/home/huyheo/work/Project/Test_New_Co/model/down")
-os.system("ls -l")
-print "### ./down.sh full_head"
-os.system("./down.sh full_head")
+try:
+	target2 = sys.argv[2]
+except:
+    target2 = ''  
 
-print "### make t51_rev01_epg_defconfig"
-os.chdir(home_url +"/make")
-os.system("make t51_rev01_epg_defconfig")
+def make_release(target2):
+    if target2 =='print':
+        print "### make t51_rev03_rel_dbg_defconfig"
+        os.chdir(home_url +"/make")
+        os.system("make t51_rev03_rel_dbg_defconfig")
+    elif target2 =='release':
+        print "### make t51_rev03_rel_defconfig"
+        os.chdir(home_url +"/make")
+        os.system("make t51_rev03_rel_defconfig")
+    else:
+        print "wrong option"
+        exit()
+        
 
-print "### make world"
-os.system("make world")
+    print "### make world"
+    os.system("make world")
 
-#optional for typing password
-os.system("maiphuong")
-os.system("maiphuong")
+    #optional for typing password
+    os.system("maiphuong")
+    os.system("maiphuong")
 
 
-print "### make image-mrs"
-os.system("make image-mrs")
+    print "### make image-mrs"
+    os.system("make image-mrs")
+
+def make_debug():
+    print "### make t51_rev03_epg_defconfig"
+    os.chdir(home_url +"/make")
+    os.system("make t51_rev03_epg_defconfig")
+
+    print "### make world"
+    os.system("make world")
+
+    #optional for typing password
+    os.system("maiphuong")
+    os.system("maiphuong")
+
+
+    print "### make image-mrs"
+    os.system("make image-mrs")
+
+if target1 == 'debug':
+    make_debug()
+elif target1 == 'release':
+    make_release(target2)
+

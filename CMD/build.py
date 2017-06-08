@@ -5,6 +5,7 @@ import sys
 
 home_url = "/home/huyheo/work/Project/"
 epg_url = "/home/huyheo/work/Project/Test_New_Co/model/epg/NDS"
+#epg_url = "/home/huyheo/work/Project/T51/model/epg/NDS"
 
 try:
 	target_file = sys.argv[1]
