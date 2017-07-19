@@ -3,7 +3,15 @@ print '...'
 import os
 import sys
 
+"""
 home_url = "/home/huyheo/work/Project/Test_New_Co"
+"""
+
+home_url = os.getcwd()
+def print_info():
+    print "***************************"
+    print "********make binary********"
+    print "***************************"
 
 try:
 	target1 = sys.argv[1]
@@ -17,6 +25,7 @@ except:
     target2 = ''  
 
 def make_release(target2):
+    print_info()
     if target2 =='print':
         print "### make t51_rev03_rel_dbg_defconfig"
         os.chdir(home_url +"/make")

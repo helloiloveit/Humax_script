@@ -45,13 +45,23 @@ def clean_build(version):
         print "### make t51_rev01_epg_defconfig"
         os.chdir(home_url +"/make")
         os.system("make t51_rev01_epg_defconfig")
-    else: #512MB
+    elif version =='512': #512MB
         print "### ./down.sh full_head"
         os.system("./down.sh full_head")
 
         print "### make t51_rev03_epg_defconfig"
         os.chdir(home_url +"/make")
         os.system("make t51_rev03_epg_defconfig")
+    elif version == 'R12317': #R12317
+        print "### ./down.sh full_release_R12317"
+        os.system("./down.sh full_release_R12317")
+
+        print "### make t51_rev03_epg_defconfig"
+        os.chdir(home_url +"/make")
+        os.system("make t51_rev03_epg_defconfig")
+    else:
+        print 'ERRR: Parameter is wrong version ==', version
+
 
     print "### make world"
     os.system("make world")
