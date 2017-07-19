@@ -1,0 +1,7 @@
+modified a tool found online to dump the TS payload, which we can use to filter for sections. It's attached as "tsparser.c"
+
+# Compile with
+gcc tsparser.c -o tsparser
+
+# Run with
+./tsparser < ~/Trim_TS_For_SectionFilter.ts

@@ -1,0 +1,14 @@
+Google driver: https://docs.google.com/document/d/1CFt0DIAB0dF3sZa4jugIk4G-mAWUCuim1M7yXVUj73c/edit?usp=sharing
+
+Step to make test case
+
+make platform-cdi-programs
+# copy to tftp folder
+ cp /home/huyheo/work/Project/Test_New_Co/make/output/images/application/sectionfilter_test  /home/huyheo/work/tftpboot/t51/
+
+# [Stb] Get the test by tftp 
+  tftp -g -r t51/sectionfilter_test 192.168.0.9
+  
+# execute the test
+./setionfilter_test
+
