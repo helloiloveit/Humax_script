@@ -8,9 +8,9 @@ home_url = "/home/huyheo/work/Project/Test_New_Co"
 """
 
 home_url = os.getcwd()
-def print_info():
+def print_info(text_info):
     print "***************************"
-    print "********make binary********"
+    print "********make " + text_info + "******"
     print "***************************"
 
 try:
@@ -24,15 +24,29 @@ try:
 except:
     target2 = ''  
 
+def make_hwtest():
+    print_info("hwtest")
+    os.system("make t51_rev03_hwtest_defconfig ") 
+
+    print "### make world"
+    os.system("make world")
+    
+    print "### make application-hwtest"
+    os.system("make application-hwtest")
+
+    print "### make image-mrs"
+    os.system("make image-mrs")
+    
+    return
 def make_release(target2):
-    print_info()
+    print_info("release" + target2)
     if target2 =='print':
         print "### make t51_rev03_rel_dbg_defconfig"
-        os.chdir(home_url +"/make")
+        #os.chdir(home_url +"/make")
         os.system("make t51_rev03_rel_dbg_defconfig")
     elif target2 =='release':
         print "### make t51_rev03_rel_defconfig"
-        os.chdir(home_url +"/make")
+        #os.chdir(home_url +"/make")
         os.system("make t51_rev03_rel_defconfig")
     else:
         print "wrong option"
@@ -70,4 +84,6 @@ if target1 == 'debug':
     make_debug()
 elif target1 == 'release':
     make_release(target2)
+elif target1 == 'hwtest':
+    make_hwtest()
 

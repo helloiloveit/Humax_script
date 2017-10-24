@@ -1,3 +1,4 @@
+#!/usr/bin/python
 import os, sys
 print "remote noise"
 print 'sys.argv[1] = ', sys.argv[1]

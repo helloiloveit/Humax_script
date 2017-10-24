@@ -41,6 +41,37 @@ def build_release_print():
 
     print "Done"
 
+def build_release():
+    print "To build Image from Release Binary :" + target_file
+    os.chdir(home_url)
+    print "### cd "+ home_url
+
+
+    if (os.path.isdir("release_buildtree")):
+        print 'Dir is existed'
+    else:
+        print 'ERROR, check the image again'
+
+
+    print "### Build Image"
+    print "change to Dir: " + home_url + "release_buildtree/misc/buildsys"
+    os.chdir(home_url + "release_buildtree/misc/buildsys")
+
+    print "Build:"
+    os.system("./humax_gen_squashfs_for_release_tree.sh release")
+    """ 
+    if(os.path.exists("/home/huyheo/work/Project/release_buildtree/misc/buildsys/../../bin/squashfs/debug/vmlinuz-squashfs-73465a0_mrs.bin")):
+        print "vmlinuz-squashfs-73465a0_mrs.bin is generated."
+    """
+
+    print "### Copy to Tftp folder"
+    print "cp /home/huyheo/work/Project/release_buildtree/misc/buildsys/../../bin/squashfs/release/vmlinuz-squashfs-73465a0_mrs.bin /home/huyheo/work/tftpboot/t51"
+    os.system("cp /home/huyheo/work/Project/release_buildtree/misc/buildsys/../../bin/squashfs/release/vmlinuz-squashfs-73465a0_mrs.bin /home/huyheo/work/tftpboot/t51")
+
+    print "Done"
+
+
+
 
 def build_debug():
     print "To build Image from Release Binary :" + target_file
@@ -74,5 +105,7 @@ if sys.argv[1] == 'debug':
     build_debug()
 elif sys.argv[1] =='release_print':
     build_release_print()
+elif sys.argv[1] =='release':
+    build_release()
 elif target_file == 'help':
     print 'help'
