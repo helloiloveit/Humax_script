@@ -36,8 +36,8 @@ def build_release_print():
     """
 
     print "### Copy to Tftp folder"
-    print "cp /home/huyheo/work/Project/release_buildtree/misc/buildsys/../../bin/squashfs/release_print/vmlinuz-squashfs-73465a0_mrs.bin /home/huyheo/work/tftpboot/t51"
-    os.system("cp /home/huyheo/work/Project/release_buildtree/misc/buildsys/../../bin/squashfs/release_print/vmlinuz-squashfs-73465a0_mrs.bin /home/huyheo/work/tftpboot/t51")
+    print "cp /home/huyheo/work/Project/release_buildtree/misc/buildsys/../../bin/squashfs/release_print/vmlinuz-squashfs-73465a0_mrs.bin /home/huyheo/work/tftpboot/t52"
+    os.system("cp /home/huyheo/work/Project/release_buildtree/misc/buildsys/../../bin/squashfs/release_print/vmlinuz-squashfs-73465a0_mrs.bin /home/huyheo/work/tftpboot/t52")
 
     print "Done"
 
@@ -65,8 +65,8 @@ def build_release():
     """
 
     print "### Copy to Tftp folder"
-    print "cp /home/huyheo/work/Project/release_buildtree/misc/buildsys/../../bin/squashfs/release/vmlinuz-squashfs-73465a0_mrs.bin /home/huyheo/work/tftpboot/t51"
-    os.system("cp /home/huyheo/work/Project/release_buildtree/misc/buildsys/../../bin/squashfs/release/vmlinuz-squashfs-73465a0_mrs.bin /home/huyheo/work/tftpboot/t51")
+    print "cp /home/huyheo/work/Project/release_buildtree/misc/buildsys/../../bin/squashfs/release/vmlinuz-squashfs-73465a0_mrs.bin /home/huyheo/work/tftpboot/t52"
+    os.system("cp /home/huyheo/work/Project/release_buildtree/misc/buildsys/../../bin/squashfs/release/vmlinuz-squashfs-73465a0_mrs.bin /home/huyheo/work/tftpboot/t52")
 
     print "Done"
 

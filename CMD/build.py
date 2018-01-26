@@ -5,8 +5,9 @@ import sys
 
 home_url = "/home/huyheo/work/Project/"
 epg_url = "/home/huyheo/work/Project/Test_New_Co/model/epg/NDS"
-tftp_url = "/home/huyheo/work/tftpboot/t51"
-final_binary="vmlinuz-squashfs-73465a0_mrs.bin"
+#tftp_url = "/home/huyheo/work/tftpboot/t52"
+tftp_url = "/home/huyheo/work/tftpboot/"
+final_binary=" "
 
 try:
 	mode  = sys.argv[1]
@@ -19,6 +20,7 @@ try:
 except:
 	print 'No Binary name.  Ex: T51_73535_CDI_24Feb2017_R11052.tar.bz2'
 	exit()
+
 
 def validate_env():
     os.chdir(home_url)
@@ -40,6 +42,31 @@ def copy_image_to_tftp(mode):
     print "### Copy to Tftp folder"
     print "cp " + os.path.join(home_url,"release_buildtree/misc/buildsys/../../bin/squashfs/",mode,final_binary) +" " + tftp_url
     os.system("cp " + os.path.join(home_url,"release_buildtree/misc/buildsys/../../bin/squashfs/",mode,final_binary) +" " + tftp_url)
+
+########################
+# Get prj name
+########################
+def get_prj_name():
+    print "Getting prj name... :" + sys.argv[2] 
+    prj_name = sys.argv[2].split("_")[0]
+    if prj_name == "HDR":
+        print "HDR prj"
+	global final_binary
+	final_binary = "vmlinuz-squashfs-7346b0_mrs.bin"
+        return "hdr-1002s-ph3"
+    elif prj_name == "T51":
+        print "T51 prj"
+	global final_binary 
+	final_binary = "vmlinuz-squashfs-73465a0_mrs.bin"
+	return "t51"
+    elif prj_name =="T52":
+        print "T52 prj"
+	global final_binary
+	final_binary = "vmlinuz-squashfs-73465a0_mrs.bin"
+	return "t52"
+    else:
+        print prj_name + " is not defined. Try again"
+	raise Exception(" Prj is not defined")
 
 
 
@@ -82,8 +109,8 @@ def create_debug():
     print "To build Image from Release Binary :" + target_file
     validate_env()
 
-    print "tar -xjvf " + target_file
-    os.system("tar -xjvf " + target_file)
+    print "sudo tar -xjvf " + target_file
+    os.system("sudo tar -xjvf " + target_file)
     if (os.path.isdir("release_buildtree")):
         print 'Directory is unpacked successfully'
     else:
@@ -103,6 +130,17 @@ def create_debug():
     copy_image_to_tftp(mode)
 
     print "Done"
+
+try:
+	prj_name = get_prj_name()
+	tftp_url = os.path.join(tftp_url, prj_name)
+	print "tftp url = " + tftp_url
+	print "final_binary = " + final_binary
+ 
+ 
+except:
+	print "Could not get Prj Name"
+	exit()
 
 if mode == 'debug':
     create_debug()
